@@ -8,12 +8,3 @@ config :xuber, XUber.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
-
-# Configure your database
-config :xuber, XUber.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "xuber_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox

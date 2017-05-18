@@ -18,21 +18,12 @@ defmodule XUber.Web do
 
   def model do
     quote do
-      use Ecto.Schema
-
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
     end
   end
 
   def controller do
     quote do
       use Phoenix.Controller, namespace: XUber
-
-      alias XUber.Repo
-      import Ecto
-      import Ecto.Query
 
       import XUber.Router.Helpers
       import XUber.Gettext
@@ -65,9 +56,6 @@ defmodule XUber.Web do
     quote do
       use Phoenix.Channel
 
-      alias XUber.Repo
-      import Ecto
-      import Ecto.Query
       import XUber.Gettext
     end
   end

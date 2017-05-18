@@ -8,7 +8,7 @@ use Mix.Config
 # General application configuration
 config :xuber,
   namespace: XUber,
-  ecto_repos: [XUber.Repo]
+  ecto_repos: []
 
 # Configures the endpoint
 config :xuber, XUber.Endpoint,

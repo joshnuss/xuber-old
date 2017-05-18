@@ -2,7 +2,7 @@ defmodule XUber.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", XUber.RoomChannel
+  channel "tracker:*", XUber.TrackerChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

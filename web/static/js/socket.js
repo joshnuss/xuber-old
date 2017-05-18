@@ -53,10 +53,45 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 
 socket.connect()
 
+let name = prompt("Your name?")
 // Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("topic:subtopic", {})
+let channel = socket.channel("tracker:lobby", {name: name})
+window.channel = channel;
+
+function positionChanged(position) {
+  let coords = position.coords;
+
+  channel.push("move", {
+    name: name,
+    coords: {
+      latitude: coords.latitude,
+      longitude: coords.longitude
+    }
+  })
+}
+
 channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
+  .receive("ok", resp => {
+    navigator.geolocation.watchPosition(positionChanged);
+
+    console.log("Joined successfully", resp)
+  })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+channel.on("welcome", resp => {
+  console.log(`Welcome! Folks we know about: ${resp.names.join(', ')}`)
+})
+
+channel.on("joined", resp => {
+  console.log(`${resp.names.join(', ')} has joined`)
+})
+
+channel.on("left", resp => {
+  console.log(`${resp.names.join(', ')} has left`)
+})
+
+channel.on("moved", resp => {
+  console.log(`Moved ${resp.name} to ${resp.coords.latitude}, ${resp.coords.longitude}`, resp.coords);
+})
 
 export default socket

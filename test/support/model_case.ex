@@ -16,22 +16,11 @@ defmodule XUber.ModelCase do
 
   using do
     quote do
-      alias XUber.Repo
-
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query
       import XUber.ModelCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(XUber.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(XUber.Repo, {:shared, self()})
-    end
-
     :ok
   end
 
