@@ -2,11 +2,24 @@
 
 A Uber-like app that uses [Phoenix Channels](http://www.phoenixframework.org/docs/channels) and integrates with the browser's [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation).
 
-## How it works:
+## How it works
 
 When a browser connects to the channel, it can share it's position (latitude/longitude) with all other connected clients. When the position changes, all clients are notified. This is the basis for ridesharing and delivery tracking apps.
 
 Caveat: in this demo, all clients connect to one coordinating process. In the real world, that won't scale. You'd need coordinators to work in a grid, each responsible for a specific region (like cell towers).
+
+## Under the hood
+
+**backend**:
+
+- `XUber.TrackerChannel`: a channel that handles clients joining, moving & terminating and notifies `XUber.Coordinator`
+- `XUber.Coordinator`: a process that manages a list of names and their coordinates
+
+**frontend**
+
+- `socket.js`: hooks into the GeoLocation API and transmits coordinates to the backend server
+- `Google Maps API`: displays current positions
+
 
 ## Setup
 
