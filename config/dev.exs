@@ -26,6 +26,8 @@ config :xuber, XUber.Endpoint,
     ]
   ]
 
+config :xuber, :map_api_key, "AIzaSyBLTunQagoC2MCJ_aKHiKzvDeWPqWg_Zqg"
+
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 

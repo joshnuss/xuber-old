@@ -1,1 +1,9 @@
-/* This file is for your main application css. */
+#map {
+  height: 100%;
+}
+
+html, body, main {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

@@ -21,6 +21,6 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= 1 %>&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Application.get_env(:xuber, :map_api_key) %>&callback=initMap"></script>
   </body>
 </html>
