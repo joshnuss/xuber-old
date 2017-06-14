@@ -4,7 +4,7 @@ A Uber-like app that uses [Phoenix Channels](http://www.phoenixframework.org/doc
 
 ## How it works
 
-When a browser connects to the channel, it can share it's position (latitude/longitude) with all other connected clients. When the position changes, all clients are notified. This is the basis for ridesharing and delivery tracking apps.
+When the browser connects to the channel, it shares its position (latitude/longitude) with the server, which broadcasts it to all connected clients. When the position changes, all clients are notified. This is the basis for ridesharing and delivery tracking apps.
 
 Caveat: in this demo, all clients connect to one coordinating process. In the real world, that won't scale. You'd need coordinators to work in a grid, each responsible for a specific region (like cell towers).
 
